@@ -1,0 +1,13 @@
+Implementation feature
+
+- Replace 2 Route
+- Replace MathCalculationController
+- Replace MarkingStoreRequest
+- Replace models
+- Replace migration
+- Replace public/js and public/plugins 
+- Add 
+    <script src="{{ asset('plugins/Jquery/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('js/app.min.js') }}"></script>
+
+    to app.blade.php

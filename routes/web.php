@@ -13,10 +13,6 @@ use App\Http\Controllers\MarkCalculationController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::group([
-    'middleware' => 'guest:web',
-    'as' => 'user.',
-], function () {
-    Route::get('/', [MarkCalculationController::class, 'index'])->name('get.calculationForm');
-    Route::post('/store', [MarkCalculationController::class, 'store'])->name('store.calculation');
-});
+    Route::get('/', [MarkCalculationController::class, 'index'])->name('user.get.calculationForm');
+    Route::post('/store', [MarkCalculationController::class, 'store'])->name('user.store.calculation');
+
