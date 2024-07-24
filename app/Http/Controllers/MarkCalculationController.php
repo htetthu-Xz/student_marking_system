@@ -19,6 +19,8 @@ class MarkCalculationController extends Controller
 {
     public function index() 
     {
+        $roll_number = '1CST-33';
+        $student = Student::where('roll_number', );
         return view('mark_calculation.index');    
     }
 
@@ -55,12 +57,35 @@ class MarkCalculationController extends Controller
 
             DB::commit();
 
-            return back()->with('success', 'Student marking successfully added.');
+            //return back()->with('success', 'Student marking successfully added.');
+
+            return redirect()->route('user.get.grading', $student->id);
 
         } catch (Exception $e) {
             DB::rollBack();
 
             echo $e->getMessage();
         }
+    }
+
+    public function getGrading(Student $student) 
+    {
+        $grading = $student->Grading;
+        $myanmar = $student->MyanmarMark;
+        $english = $student->EnglishMark;
+        $physics = $student->MathematicMark;
+        $PIT = $student->PITMark;
+        $microsoft = $student->MicrosoftOfficeMark;
+
+        return view('grading_list.index', [
+            'student' => $student,
+            'grading' => $grading,
+            'myanmar' => $myanmar,
+            'english' => $english,
+            'PIT' => $PIT,
+            'physics' => $physics,
+            'microsoft' => $microsoft,
+
+        ]);
     }
 }

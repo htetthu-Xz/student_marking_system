@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    @include('layouts.partials.nav')
+    {{-- @include('layouts.partials.nav') --}}
 
     <div class="">
         <div class="mt-4">
