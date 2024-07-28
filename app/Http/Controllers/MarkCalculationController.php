@@ -59,7 +59,9 @@ class MarkCalculationController extends Controller
 
             //return back()->with('success', 'Student marking successfully added.');
 
-            return redirect()->route('user.get.grading', $student->id);
+            return redirect()
+                ->route('user.get.gradingList')
+                ->with('success', 'Student grading successfully created.');
 
         } catch (Exception $e) {
             DB::rollBack();
@@ -68,23 +70,20 @@ class MarkCalculationController extends Controller
         }
     }
 
-    public function getGrading(Student $student) 
+    public function gradingLists() 
     {
-        $grading = $student->Grading;
-        $myanmar = $student->MyanmarMark;
-        $english = $student->EnglishMark;
-        $physics = $student->MathematicMark;
-        $PIT = $student->PITMark;
-        $microsoft = $student->MicrosoftOfficeMark;
+        $students = Student::paginate(10);
 
         return view('grading_list.index', [
+            'students' => $students,
+
+        ]);
+    }
+
+    public function getGrading(Student $student) 
+    {
+        return view('grading_list.show', [
             'student' => $student,
-            'grading' => $grading,
-            'myanmar' => $myanmar,
-            'english' => $english,
-            'PIT' => $PIT,
-            'physics' => $physics,
-            'microsoft' => $microsoft,
 
         ]);
     }

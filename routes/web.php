@@ -16,4 +16,5 @@ use App\Http\Controllers\MarkCalculationController;
     Route::get('/', [MarkCalculationController::class, 'index'])->name('user.get.calculationForm');
     Route::post('/store', [MarkCalculationController::class, 'store'])->name('user.store.calculation');
     Route::get('students/{student}/get-grading-list', [MarkCalculationController::class, 'getGrading'])->name('user.get.grading');
+    Route::get('students/grading-lists', [MarkCalculationController::class, 'gradingLists'])->name('user.get.gradingList');
 

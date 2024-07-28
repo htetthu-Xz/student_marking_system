@@ -16,12 +16,6 @@
             <h2 class="mb-4">Student Grading System</h2>
         </div>
 
-        @if (session()->has('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('success') }}
-            </div>
-        @endif
-
         <form action="{{ route('user.store.calculation') }}" class="row" method="POST" id="calculation-form">
             @csrf
             <div class="form-group mb-4">
